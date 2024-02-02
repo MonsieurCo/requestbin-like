@@ -19,10 +19,10 @@ def get_cookie():
     value = datetime.datetime.fromtimestamp(timestamp)
     cookie_value = value.strftime('%Y-%m-%d %H:%M:%S') + ":\t" + request.args.get('cookie')
     with open("request.txt", "a") as f:
-        f.write(cookie_value+"\n")
+        f.write(escape(cookie_value)+"\n")
     f.close()
 
-    return cookie_value
+    return escape(cookie_value)
 
 @app.route('/request')
 def get_request():
